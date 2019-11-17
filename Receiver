@@ -1,0 +1,83 @@
+/*
+©2019　AUTOLAB Inc.
+*/
+#include "ESP8266WiFi.h"
+#define lev 20　//wifi感度の閾値
+#define ssid ESPap
+
+void setup() {
+  Serial.begin(115200);
+
+  // Set WiFi to station mode and disconnect from an AP if it was previously connected
+  WiFi.mode(WIFI_STA);
+  WiFi.disconnect();
+  delay(100);
+
+  
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(D0,OUTPUT);
+  pinMode(D1,OUTPUT);
+  pinMode(D2,OUTPUT);
+
+  Serial.println("Setup done");
+}
+
+void loop() {
+  Serial.println("scan start");
+
+  // WiFi.scanNetworks will return the number of networks found
+  int n = WiFi.scanNetworks();
+  Serial.println("scan done");
+  
+  
+  if (n == 0) {
+    Serial.println("no networks found");
+    
+  } else {
+    Serial.print(n);
+    Serial.println(" networks found");
+    for (int i = 0; i < n; ++i) {
+      // Print SSID and RSSI for each network found
+      digitalWrite(D2, LOW);
+      digitalWrite(D0, LOW);
+
+      String b = WiFi.SSID(i);//SSID 変数ｂ
+      int w = WiFi.RSSI(i);　//感度変数w
+      int c= w*-1;
+     String a = "ssid";//SSID入力
+      /*
+      Serial.print(i + 1);
+      Serial.print(": ");
+      Serial.print (b);
+      Serial.print(" (");
+      Serial.print(c);
+      Serial.print(")");
+      Serial.println((WiFi.encryptionType(i) == ENC_TYPE_NONE) ? " " : "*");
+      */
+      int d = a.equals(b); //SSIDの正誤判定変数ｄ
+      //Serial.println(d);
+   
+      if (d == 1)  //正誤判定
+      {
+      Serial.print (b);
+      Serial.print(" (");
+      Serial.print(c);
+      Serial.println(")");
+             
+      if (c > lev)  //受信強度判定
+      {
+        digitalWrite(D2, HIGH);// BLue LED
+        Serial.println("safe");
+        delay(10);
+      }
+      else{
+      digitalWrite(D0, HIGH);// Red LED
+      delay(10);
+      }
+    }
+  }//for end
+  Serial.println("");
+
+  // Wait a bit before scanning again
+  delay(100);
+  }}
