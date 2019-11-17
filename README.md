@@ -10,6 +10,11 @@ arduino ide
 Hiletgo
 ESP8266 NodeMCU LUA CP2102 ESP-12E
 
+注意：Ｄ0とＤ2に抵抗付きＬＥＤを設置の事
+
+http://akizukidenshi.com/catalog/g/gI-06245/
+
+
 以下、製品説明より抜粋
 
 インストール手順：
@@ -38,15 +43,6 @@ Tools -> Upload Speed -> 921600
 
 Tools-->Port--> (whatever it is)
 
-6、Githubで32ビットフラッシャーexeをダウンロードして実行する（godubでnodemcu / nodemcu-flasher / tree / master /を検索する）
-github.com/nodemcu/nodemcu-flasher/tree/master/Win32/Release
-
-または、64ビットフラッシャーexeをダウンロードして実行してください：
-github.com/nodemcu/nodemcu-flasher/tree/master/Win64/Release
-
-7. Arduino IDEで、旧式のBlinkプログラムを探します。 ロード、コンパイル、アップロード。
-
-8. FILE> EXAMPLES> ESP8266> BLINKに進み、点滅を開始します。
 
 ウェブサイトへのデータダウンロードアクセス：
 
