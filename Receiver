@@ -3,7 +3,7 @@
 */
 #include "ESP8266WiFi.h"
 #define lev 20　//wifi感度の閾値
-#define ssid ESPap
+#define ssid ESPap　//ssidの設定
 
 void setup() {
   Serial.begin(115200);
