@@ -14,6 +14,7 @@ ESP8266 NodeMCU LUA CP2102 ESP-12E
 
 http://akizukidenshi.com/catalog/g/gI-06245/
 
+https://user-images.githubusercontent.com/44431594/69017292-61bc9400-09e9-11ea-9c82-78405e08a3cb.JPG
 
 以下、製品説明より抜粋
 
